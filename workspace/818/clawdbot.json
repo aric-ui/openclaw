@@ -1,0 +1,26 @@
+{
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "dmPolicy": "allowlist",
+      "accounts": {
+        "default": {
+          "name": "818 Shutters",
+          "dmPolicy": "allowlist"
+        }
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "workspace": "/app/workspace/818"
+    },
+    "list": [
+      {
+        "id": "818",
+        "name": "818-shutters",
+        "workspace": "/app/workspace/818"
+      }
+    ]
+  }
+}
