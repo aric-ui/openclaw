@@ -1,4 +1,8 @@
 {
+  "gateway": {
+    "bind": "lan",
+    "port": 8080
+  },
   "channels": {
     "telegram": {
       "enabled": true,
