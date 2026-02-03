@@ -9,8 +9,10 @@
       "dmPolicy": "allowlist",
       "accounts": {
         "default": {
-          "name": "818 Shutters",
-          "dmPolicy": "allowlist"
+          "name": "Liora Shachar",
+          "botToken": "8523109855:AAEmhxOdX4HyDZhkZS5xb6sHsDJhZvgnhJ8",
+          "dmPolicy": "allowlist",
+          "allowFrom": ["8461754943"]
         }
       }
     }
@@ -28,3 +30,4 @@
     ]
   }
 }
+
