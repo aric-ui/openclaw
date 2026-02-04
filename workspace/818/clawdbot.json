@@ -28,6 +28,11 @@
         "workspace": "/app/workspace/818"
       }
     ]
+  },
+  "tools": {
+    "agentToAgent": {
+      "enabled": true
+    }
   }
 }
 
