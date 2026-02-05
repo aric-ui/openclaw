@@ -239,6 +239,13 @@ export function createGatewayHttpServer(opts: {
       return;
     }
 
+    // Unauthenticated health endpoint for container platform health checks (Railway, Render, etc.)
+    if (req.url === "/health" || req.url === "/health/") {
+      res.writeHead(200, { "Content-Type": "text/plain; charset=utf-8" });
+      res.end("ok");
+      return;
+    }
+
     try {
       const configSnapshot = loadConfig();
       const trustedProxies = configSnapshot.gateway?.trustedProxies ?? [];

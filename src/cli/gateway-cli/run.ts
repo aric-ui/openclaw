@@ -174,7 +174,9 @@ async function runGatewayCommand(opts: GatewayRunOpts) {
     defaultRuntime.exit(1);
     return;
   }
-  const bindRaw = toOptionString(opts.bind) ?? cfg.gateway?.bind ?? "loopback";
+  // Auto-detect PaaS environments (Railway, Render, Heroku) via PORT env var and default to lan binding
+  const paasDefault = process.env.PORT ? "lan" : "loopback";
+  const bindRaw = toOptionString(opts.bind) ?? cfg.gateway?.bind ?? paasDefault;
   const bind =
     bindRaw === "loopback" ||
     bindRaw === "lan" ||
