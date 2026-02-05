@@ -31,6 +31,9 @@ RUN pnpm ui:build
 
 ENV NODE_ENV=production
 
+# Entrypoint: auto-generates gateway token for PaaS if not provided.
+RUN chmod +x /app/docker-entrypoint.sh
+
 # Allow non-root user to write temp files during runtime/tests.
 RUN chown -R node:node /app
 
@@ -39,10 +42,13 @@ RUN chown -R node:node /app
 # This reduces the attack surface by preventing container escape via root privileges
 USER node
 
+# Point to workspace config (e.g. workspace/818 deployment).
+# Can be overridden via OPENCLAW_CONFIG_PATH env var at runtime.
+ENV OPENCLAW_CONFIG_PATH="/app/workspace/818/clawdbot.json"
+
+ENTRYPOINT ["/app/docker-entrypoint.sh"]
+
 # Start gateway server with default config.
-# Binds to loopback (127.0.0.1) by default for security.
-#
-# For container platforms requiring external health checks:
-#   1. Set OPENCLAW_GATEWAY_TOKEN or OPENCLAW_GATEWAY_PASSWORD env var
-#   2. Override CMD: ["node","dist/index.js","gateway","--allow-unconfigured","--bind","lan"]
+# PaaS environments (Railway, Render) are auto-detected via PORT env var:
+# bind defaults to lan (0.0.0.0) and port to $PORT.
 CMD ["node", "dist/index.js", "gateway", "--allow-unconfigured"]
