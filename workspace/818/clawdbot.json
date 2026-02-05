@@ -33,6 +33,19 @@
     "agentToAgent": {
       "enabled": true
     }
+      },
+  "mcp": {
+    "servers": {
+      "818-crm": {
+        "command": "node",
+        "args": ["/app/workspace/818/mcp-server/index.js"],
+        "env": {
+          "SUPABASE_URL": "@SUPABASE_URL",
+          "SUPABASE_KEY": "@SUPABASE_KEY"
+        }
+      }
+    }
+  }
   }
 }
 
