@@ -1,7 +1,8 @@
 {
     "channels": {
           "telegram": {
-                  "enabled": true
+                  "enabled": true,
+                              "dmPolicy": "open"
           }
     }
 }
