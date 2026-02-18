@@ -1,7 +1,7 @@
 #!/bin/bash
 mkdir -p ~/.openclaw
 
-# Create OpenClaw config with Telegram and CRM MCP server
+# Create OpenClaw config with Telegram
 cat > ~/.openclaw/openclaw.json << 'CONFIGEND'
 {
   "channels": {
@@ -11,12 +11,8 @@ cat > ~/.openclaw/openclaw.json << 'CONFIGEND'
       "allowFrom": ["*"]
     }
   }
-  }
 }
 CONFIGEND
-
-# Replace environment variable in config
-sed -i "s|\${CRM_MCP_API_KEY}|$CRM_MCP_API_KEY|g" ~/.openclaw/openclaw.json
 
 # Start the gateway
 node dist/index.js gateway --allow-unconfigured
